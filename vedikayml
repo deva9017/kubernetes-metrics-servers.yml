@@ -1,22 +1,19 @@
----
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vedikaui
+  name: angular-deployment
 spec:
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
-      app: vedikaui
-  replicas: 2 # tells deployment to run 1 pods matching the template
-  template: # create pods using pod definition in this template
+      app: angular-deployment
+  replicas: 3
+  template:
     metadata:
       labels:
-        app: vedikaui
+        app: angular-deployment
     spec:
-      containers:
-      - name: vedikaui
-        image: shivastunts/angularuikube
-        ports:
-        - containerPort: 4200
+     containers:
+     - name: angular-deployment
+       image: "shivastunts/angularuikube"
+       ports:
+       - containerPort: 4200
